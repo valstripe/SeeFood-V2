@@ -9,12 +9,16 @@
 import UIKit
 import VisualRecognitionV3
 import SVProgressHUD
+import Social
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let apiKey = "406e59b1e929947e3db8a59f2c7e7d7da1cb025d"
+    let apiKey = ""
     let version = "2017-01-24"
     
+    @IBOutlet weak var hotdogImage: UIImageView!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var topBarImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -23,6 +27,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareButton.isHidden = true
+        
         imagePicker.delegate = self
     }
     
@@ -31,6 +37,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             cameraButton.isEnabled = false
             SVProgressHUD.show()
+            shareButton.isHidden = true
+            self.hotdogImage.isHidden = true
             
             imageView.image = image
             imagePicker.dismiss(animated: true, completion: nil)
@@ -53,16 +61,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 DispatchQueue.main.async {
                     self.cameraButton.isEnabled = true
                     SVProgressHUD.dismiss()
+                    self.shareButton.isHidden = true
+                    
                 }
                 
                 if self.classificationResults.contains("hotdog") {
                     DispatchQueue.main.async {
                         self.navigationItem.title = "Hotdog!"
+                        self.navigationController?.navigationBar.barTintColor = UIColor.green
+                        self.navigationController?.navigationBar.isTranslucent = false
+                        self.topBarImageView.image  = UIImage(named: "hotdog")
                     }
                     
                 } else {
                     DispatchQueue.main.async {
                         self.navigationItem.title = "Not a Hotdog!"
+                        self.navigationController?.navigationBar.barTintColor = UIColor.red
+                        self.navigationController?.navigationBar.isTranslucent = false
+                        self.topBarImageView.image  = UIImage(named: "not-hotdog")
                     }
                     
                 }
@@ -80,6 +96,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func shareTapped(_ sender: UIButton) {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            vc?.setInitialText("I have \(navigationItem.title)")
+            vc?.add(#imageLiteral(resourceName: "hotdogBackground"))
+            present(vc!, animated: true, completion: nil)
+        } else {
+            navigationItem.title = "Please log in to Twitter."
+        }
+    }
     
 }
 

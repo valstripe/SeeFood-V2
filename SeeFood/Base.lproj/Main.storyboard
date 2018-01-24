@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Heavy</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -18,16 +23,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1FA-wg-eJ1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1FA-wg-eJ1" userLabel="User Chosen Image">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-fQ-ny2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="uTY-5a-HBs"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcH-9R-1eI">
+                                <rect key="frame" x="109" y="585" width="157" height="47"/>
+                                <color key="backgroundColor" red="0.056607745590000001" green="0.50133928569999997" blue="0.84808474779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="8Lw-uY-oOz"/>
+                                    <constraint firstAttribute="height" constant="47" id="vN9-Iq-5FA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Share on Twitter">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w7z-Kk-c1c"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotdogBackground" translatesAutoresizingMaskIntoConstraints="NO" id="BjC-rS-uL4" userLabel="Static Hotdog image">
+                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="CZ5-e6-VJz"/>
+                                    <constraint firstAttribute="width" constant="240" id="xuX-NZ-ryO"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1FA-wg-eJ1" secondAttribute="trailing" id="1Tn-2P-xQ5"/>
                             <constraint firstItem="1FA-wg-eJ1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="27u-rU-QXp"/>
+                            <constraint firstItem="BjC-rS-uL4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2OH-A0-PmH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RQf-fQ-ny2" secondAttribute="trailing" id="93Z-it-21x"/>
+                            <constraint firstItem="RQf-fQ-ny2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9qq-FM-q8w"/>
+                            <constraint firstItem="NcH-9R-1eI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fgs-FE-u4g"/>
+                            <constraint firstItem="RQf-fQ-ny2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GLQ-m9-e55"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1FA-wg-eJ1" secondAttribute="bottom" id="MgV-38-B66"/>
+                            <constraint firstItem="RQf-fQ-ny2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sd1-7P-1vt"/>
+                            <constraint firstItem="BjC-rS-uL4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dX4-Lj-kip"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NcH-9R-1eI" secondAttribute="bottom" constant="35" id="l4o-Ev-0Ep"/>
                             <constraint firstItem="1FA-wg-eJ1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p98-VQ-4xX"/>
+                            <constraint firstItem="NcH-9R-1eI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y8W-aD-C9W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,7 +87,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cameraButton" destination="w6Y-Vh-yg5" id="M1N-2A-Oga"/>
+                        <outlet property="hotdogImage" destination="BjC-rS-uL4" id="BvY-NB-lqO"/>
                         <outlet property="imageView" destination="1FA-wg-eJ1" id="58j-hN-ut1"/>
+                        <outlet property="shareButton" destination="NcH-9R-1eI" id="eg1-0T-eLi"/>
+                        <outlet property="topBarImageView" destination="RQf-fQ-ny2" id="i81-BF-p2f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -55,6 +105,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CYD-aJ-abb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="26"/>
+                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -66,4 +120,7 @@
             <point key="canvasLocation" x="-452" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hotdogBackground" width="191" height="143"/>
+    </resources>
 </document>
